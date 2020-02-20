@@ -6,7 +6,8 @@ module.exports = {
     findSteps,
     add,
     update,
-    remove
+    remove,
+    addStep
 }
 
 function find() {
@@ -56,3 +57,11 @@ function remove(id) {
         .where({id})
         .del()
 }
+
+function addStep(step, scheme_id) {
+    return db('steps')
+        .where({scheme_id})
+        .insert(step, 'id')
+}
+
+// addStep(step, scheme_id): This method expects a step object and a scheme id. It inserts the new step into the database, correctly linking it to the intended scheme.
